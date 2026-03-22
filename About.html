@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="si" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Royal College Horana</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;700&display=swap');
+    :root { --purple: #4C1D95; --gold: #F4C430; }
+    .glass { background: rgba(255,255,255,0.15); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.2); }
+  </style>
+</head>
+<body class="bg-[#2A1B4B] text-white font-sans">
+
+  <!-- RESPONSIVE NAVBAR -->
+  <nav class="fixed top-0 w-full glass z-50 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="assets/images/logo.png" class="w-12 h-12 md:w-14 md:h-14" alt="Logo">
+        <div>
+          <h1 class="text-2xl md:text-3xl font-bold tracking-tighter">Royal College Horana</h1>
+          <p class="text-gold text-xs md:text-sm -mt-1">1978</p>
+        </div>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex gap-8 text-sm font-medium items-center">
+        <a href="index.html" class="hover:text-gold">Home</a>
+        <a href="about.html" class="hover:text-gold">About</a>
+        <a href="history.html" class="hover:text-gold">History</a>
+        <a href="staff.html" class="hover:text-gold">Staff</a>
+        <a href="events.html" class="hover:text-gold">Events</a>
+        <a href="contact.html" class="hover:text-gold">Contact</a>
+        
+        <!-- Associations Dropdown -->
+        <div id="associations-dropdown" class="group relative">
+          <a href="associations.html" class="hover:text-gold flex items-center gap-1">
+            Associations <i class="fa-solid fa-chevron-down text-xs"></i>
+          </a>
+          <div id="dropdown-menu" class="hidden group-hover:block absolute top-full right-0 mt-2 w-72 glass rounded-3xl py-4 shadow-2xl z-50 bg-[#2A1B4B]/95 border border-gold/30">
+            <a href="media-unit.html" class="block px-6 py-3 hover:bg-white/10">Media Unit</a>
+            <a href="ict-society.html" class="block px-6 py-3 hover:bg-white/10">ICT Society</a>
+            <a href="science-society.html" class="block px-6 py-3 hover:bg-white/10">Science Society</a>
+            <a href="photography-club.html" class="block px-6 py-3 hover:bg-white/10">Photography Club</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button id="mobile-menu-btn" class="md:hidden text-3xl">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 px-6 py-6">
+      <div class="flex flex-col gap-6 text-lg font-medium">
+        <a href="index.html" class="hover:text-gold">Home</a>
+        <a href="about.html" class="hover:text-gold">About</a>
+        <a href="history.html" class="hover:text-gold">History</a>
+        <a href="staff.html" class="hover:text-gold">Staff</a>
+        <a href="events.html" class="hover:text-gold">Events</a>
+        <a href="associations.html" class="hover:text-gold">Associations</a>
+        <a href="contact.html" class="hover:text-gold">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- About Hero -->
+  <div class="pt-20 h-screen bg-cover bg-center flex items-center" style="background-image: url('https://picsum.photos/id/1015/1920/1080')">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h1 class="text-5xl md:text-7xl font-black text-gold">About Royal College Horana</h1>
+      <p class="text-2xl md:text-3xl mt-6">"Learning Today, Leading Tomorrow"</p>
+      <p class="text-xl md:text-2xl mt-4">"We are a team of talented students of RCH"</p>
+    </div>
+  </div>
+
+  <!-- About Content -->
+  <section class="py-20 bg-white/5">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12">
+      <div class="glass p-8 md:p-10 rounded-3xl">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Our Story</h2>
+        <p class="text-base md:text-lg">Established in 1978, Royal College Horana has been serving the nation for 48 years with excellence, discipline and love. Today we stand as one of the most respected schools in the region with 4000+ students, 150+ teachers and 23 active societies.</p>
+      </div>
+      <div class="glass p-8 md:p-10 rounded-3xl">
+        <h2 class="text-3xl md:text-4xl font-bold mb-6">Why Choose Us?</h2>
+        <ul class="space-y-4 text-base md:text-lg">
+          <li>✅ 98.5% O/L & 94% A/L pass rates</li>
+          <li>✅ Modern smart classrooms & labs</li>
+          <li>✅ 23 clubs & strong sports teams</li>
+          <li>✅ 48 years of proven leadership</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us + Special Abouts -->
+  <section class="py-20 bg-white/5">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+      <div class="glass p-8 md:p-10 rounded-3xl">
+        <h2 class="text-3xl md:text-5xl font-bold text-gold mb-6">About Us</h2>
+        <p class="text-base md:text-lg leading-relaxed">
+          Established in 1978, Royal College Horana has been a beacon of excellence for 48 years. 
+          We are a government school that provides quality education from Grade 1 to 13, nurturing over 4000 students 
+          with strong academic results, discipline and leadership skills.
+        </p>
+      </div>
+
+      <div class="glass p-8 md:p-10 rounded-3xl">
+        <h2 class="text-3xl md:text-5xl font-bold text-gold mb-6">Special Abouts</h2>
+        <div class="space-y-6 text-base md:text-lg">
+          <div class="flex gap-4"><span class="text-4xl">🏆</span><div><p class="font-semibold">98.5% O/L & 94% A/L Pass Rates</p><p class="text-gold">Consistent top results every year</p></div></div>
+          <div class="flex gap-4"><span class="text-4xl">🔬</span><div><p class="font-semibold">Modern Smart Classrooms & Labs</p><p class="text-gold">Science, ICT, Media & Photography facilities</p></div></div>
+          <div class="flex gap-4"><span class="text-4xl">🎵</span><div><p class="font-semibold">23 Active Societies & Clubs</p><p class="text-gold">From Media Unit to Science Society</p></div></div>
+          <div class="flex gap-4"><span class="text-4xl">🏅</span><div><p class="font-semibold">48 Years of Excellence</p><p class="text-gold">Producing successful alumni since 1978</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESPONSIVE FOOTER -->
+  <footer class="glass py-12 border-t border-gold/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+        <div class="flex items-center gap-4">
+          <img src="assets/images/logo.png" class="w-14 h-14" alt="Logo">
+          <div>
+            <h3 class="text-2xl font-bold text-gold">Royal College Horana</h3>
+            <p class="text-sm text-white/70">1978 • විද්‍යා දදාති විනයන්</p>
+          </div>
+        </div>
+
+        <div class="text-center md:text-left">
+          <p class="text-xl font-medium">Phone: <span class="text-gold">034 2261096</span></p>
+          <p class="text-xl font-medium mt-1">Email: <span class="text-gold">royalcollegehorana2017@gmail.com</span></p>
+          <p class="text-lg mt-3">Royal College, Horana</p>
+        </div>
+
+        <div class="flex gap-7 text-3xl text-gold">
+          <a href="https://www.facebook.com/royalcollegehorana" target="_blank" class="hover:scale-125 transition"><i class="fa-brands fa-facebook"></i></a>
+          <a href="https://www.instagram.com/royalcollegehorana" target="_blank" class="hover:scale-125 transition"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.youtube.com/@royalcollegehorana" target="_blank" class="hover:scale-125 transition"><i class="fa-brands fa-youtube"></i></a>
+          <a href="https://wa.me/94342261096" target="_blank" class="hover:scale-125 transition"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </div>
+
+      <div class="text-center mt-12 text-white/50 text-sm border-t border-white/10 pt-6">
+        © 2026 Royal College Horana. All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    tailwind.config = { content: ["./**/*.{html,js}"], theme: { extend: { colors: { gold: "#F4C430" } } } };
+
+    // Mobile Hamburger
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileBtn.innerHTML = mobileMenu.classList.contains('hidden') 
+        ? '<i class="fa-solid fa-bars"></i>' 
+        : '<i class="fa-solid fa-xmark"></i>';
+    });
+  </script>
+</body>
+</html>

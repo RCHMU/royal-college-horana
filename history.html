@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="si" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>History | Royal College Horana | රාජකීය විද්‍යාලය හොරණ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;700&display=swap');
+    :root { --purple: #4C1D95; --gold: #F4C430; }
+    .glass { background: rgba(255,255,255,0.15); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.2); }
+    .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 24px; height: 24px; background: #F4C430; border: 4px solid #2A1B4B; border-radius: 9999px; }
+    .dark .timeline-dot { border-color: #1A1238; }
+  </style>
+</head>
+<body class="bg-[#2A1B4B] text-white font-sans">
+
+ 
+
+ <!-- RESPONSIVE NAVBAR - MOBILE HAMBURGER + ASSOCIATIONS DROPDOWN -->
+<nav class="fixed top-0 w-full glass z-50 border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="assets/images/logo.png" class="w-12 h-12 md:w-14 md:h-14" alt="Logo">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold tracking-tighter">Royal College Horana</h1>
+        <p class="text-gold text-xs md:text-sm -mt-1">1978</p>
+      </div>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex gap-8 text-sm font-medium items-center">
+      <a href="index.html" class="hover:text-gold">Home</a>
+      <a href="about.html" class="hover:text-gold">About</a>
+      <a href="history.html" class="hover:text-gold">History</a>
+      <a href="staff.html" class="hover:text-gold">Staff</a>
+      <a href="events.html" class="hover:text-gold">Events</a>
+      <a href="contact.html" class="hover:text-gold">Contact</a>
+      
+      <!-- Associations Dropdown (Right Side + Wider) -->
+      <div id="associations-dropdown" class="group relative">
+        <a href="associations.html" class="hover:text-gold flex items-center gap-1">
+          Associations <i class="fa-solid fa-chevron-down text-xs"></i>
+        </a>
+        <div id="dropdown-menu" class="hidden group-hover:block absolute top-full right-0 mt-2 w-72 glass rounded-3xl py-4 shadow-2xl z-50 bg-[#2A1B4B]/95 border border-gold/30">
+          <a href="media-unit.html" class="block px-6 py-3 hover:bg-white/10">Media Unit</a>
+          <a href="ict-society.html" class="block px-6 py-3 hover:bg-white/10">ICT Society</a>
+          <a href="science-society.html" class="block px-6 py-3 hover:bg-white/10">Science Society</a>
+          <a href="photography-club.html" class="block px-6 py-3 hover:bg-white/10">Photography Club</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button id="mobile-menu-btn" class="md:hidden text-3xl">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 px-6 py-6">
+    <div class="flex flex-col gap-6 text-lg font-medium">
+      <a href="index.html" class="hover:text-gold">Home</a>
+      <a href="about.html" class="hover:text-gold">About</a>
+      <a href="history.html" class="hover:text-gold">History</a>
+      <a href="staff.html" class="hover:text-gold">Staff</a>
+      <a href="events.html" class="hover:text-gold">Events</a>
+      <a href="associations.html" class="hover:text-gold">Associations</a>
+      <a href="contact.html" class="hover:text-gold">Contact</a>
+    </div>
+  </div>
+</nav>
+<script>
+// Mobile Hamburger Menu
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+mobileBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('hidden');
+  mobileBtn.innerHTML = mobileMenu.classList.contains('hidden') 
+    ? '<i class="fa-solid fa-bars"></i>' 
+    : '<i class="fa-solid fa-xmark"></i>';
+});
+
+// Associations Dropdown Delay (already stable)
+let timeoutId;
+const dropdownContainer = document.getElementById('associations-dropdown');
+const dropdownMenu = document.getElementById('dropdown-menu');
+
+dropdownContainer.addEventListener('mouseenter', () => {
+  clearTimeout(timeoutId);
+  dropdownMenu.classList.remove('hidden');
+});
+
+dropdownContainer.addEventListener('mouseleave', () => {
+  timeoutId = setTimeout(() => dropdownMenu.classList.add('hidden'), 400);
+});
+</script>
+
+  <!-- Hero Section -->
+  <div class="relative h-[60vh] pt-20 overflow-hidden bg-cover bg-center" style="background-image: url('https://picsum.photos/id/870/1920/1080')">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70"></div>
+    <div class="absolute inset-0 flex items-center">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h1 class="text-7xl font-black tracking-wider text-gold">Our Proud History</h1>
+        <p class="text-3xl mt-4">1978 - 2026 • 48 Years of Excellence</p>
+        <img src="assets/images/logo.png" class="w-32 mx-auto mt-8 opacity-90">
+      </div>
+    </div>
+  </div>
+
+  <!-- 48 Years Animated Counter -->
+  <section class="py-20 bg-[#1A1238]">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <div class="glass inline-block px-16 py-10 rounded-3xl">
+        <h2 class="text-6xl font-bold">1979 - 2026</h2>
+        <p id="years-count" class="text-gold text-5xl font-semibold">Years of Commitment & Excellence</p>
+        <button onclick="animateYears()" class="mt-6 px-8 py-3 bg-gold text-black font-bold rounded-3xl">Watch the Journey</button>
+      </div>
+      <p class="mt-8 text-xl">Established in 1978 • Serving the nation with pride</p>
+    </div>
+  </section>
+
+  <!-- Founders -->
+  <section class="py-16 bg-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-12">Founders & Visionaries</h2>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="glass p-8 rounded-3xl flex gap-6">
+          <img src="https://picsum.photos/id/64/120/120" class="w-28 h-28 rounded-full object-cover border-4 border-gold">
+          <div>
+            <h3 class="text-2xl font-bold">Mr. V.R.P. Kumara & Team</h3>
+            <p class="text-gold">1978 • Founding Principal</p>
+            <p class="mt-4">With the blessings of the community and dedicated educationists, Royal College Horana was established in 1978 to provide quality education to the children of Horana and surrounding areas.</p>
+          </div>
+        </div>
+        <div class="glass p-8 rounded-3xl">
+          <h3 class="text-2xl font-bold mb-4">School Started Year</h3>
+          <p class="text-8xl font-black text-gold">1978</p>
+          <p class="text-xl mt-3">First batch of 120 students walked through these gates with big dreams.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Animated Timeline -->
+  <section class="py-20 bg-[#2A1B4B]">
+    <div class="max-w-5xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-16">Milestones • 48 Years Journey</h2>
+      <div class="relative border-l-4 border-gold pl-10 space-y-16">
+        <!-- Event 1 -->
+        <div class="relative">
+          <div class="timeline-dot"></div>
+          <div class="glass p-8 rounded-3xl ml-8">
+            <span class="text-gold text-3xl font-bold">1978</span>
+            <h3 class="text-2xl font-semibold">School Established</h3>
+            <p>Opened doors with 120 students under the guidance of founding principal.</p>
+          </div>
+        </div>
+        <!-- Event 2 -->
+        <div class="relative">
+          <div class="timeline-dot"></div>
+          <div class="glass p-8 rounded-3xl ml-8">
+            <span class="text-gold text-3xl font-bold">1985</span>
+            <h3 class="text-2xl font-semibold">First O/L Batch</h3>
+            <p>98% pass rate • First batch produced excellent results.</p>
+          </div>
+        </div>
+        <!-- Event 3 -->
+        <div class="relative">
+          <div class="timeline-dot"></div>
+          <div class="glass p-8 rounded-3xl ml-8">
+            <span class="text-gold text-3xl font-bold">2005</span>
+            <h3 class="text-2xl font-semibold">New Science Lab & Smart Classrooms</h3>
+            <p>Modern facilities added to support 21st century education.</p>
+          </div>
+        </div>
+        <!-- Event 4 -->
+        <div class="relative">
+          <div class="timeline-dot"></div>
+          <div class="glass p-8 rounded-3xl ml-8">
+            <span class="text-gold text-3xl font-bold">2024</span>
+            <h3 class="text-2xl font-semibold">48th Anniversary & Record A/L Results</h3>
+            <p>94% A/L pass rate • New media unit & photography club launched.</p>
+          </div>
+        </div>
+        <!-- 2026 -->
+        <div class="relative">
+          <div class="timeline-dot"></div>
+          <div class="glass p-8 rounded-3xl ml-8 bg-gold/10 border border-gold">
+            <span class="text-gold text-3xl font-bold">2026</span>
+            <h3 class="text-2xl font-semibold">Looking Ahead • Golden Future</h3>
+            <p>48 Years Completed • Continuing to lead with excellence.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Important History Events Gallery -->
+  <section class="py-20 bg-white/5">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-5xl font-bold mb-12">Key Moments in Our History</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="glass rounded-3xl overflow-hidden"><img src="https://picsum.photos/id/201/400/300" class="w-full"><p class="p-4">1978 - Opening Ceremony</p></div>
+        <div class="glass rounded-3xl overflow-hidden"><img src="https://picsum.photos/id/301/400/300" class="w-full"><p class="p-4">1998 - First Sports Meet Victory</p></div>
+        <div class="glass rounded-3xl overflow-hidden"><img src="https://picsum.photos/id/401/400/300" class="w-full"><p class="p-4">2017 - Official Email & Website Launch</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPDATED FOOTER WITH CLICKABLE SOCIAL ICONS -->
+<footer class="glass py-12 border-t border-gold/30">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+      
+      <!-- Left: Logo -->
+      <div class="flex items-center gap-4">
+        <img src="assets/images/logo.png" class="w-14 h-14" alt="Logo">
+        <div>
+          <h3 class="text-2xl font-bold text-gold">Royal College Horana</h3>
+          <p class="text-sm text-white/70">1978 • විද්‍යා දදාති විනයන්</p>
+        </div>
+      </div>
+
+      <!-- Center: Contact -->
+      <div class="text-center md:text-left">
+        <p class="text-xl font-medium">Phone: <span class="text-gold">034 2261096</span></p>
+        <p class="text-xl font-medium mt-1">Email: <span class="text-gold">royalcollegehorana2017@gmail.com</span></p>
+        <p class="text-lg mt-3">Royal College, Horana</p>
+      </div>
+
+      <!-- Right: Social Icons (Clickable + New Tab) -->
+      <div class="flex gap-7 text-3xl text-gold">
+        <a href="https://www.facebook.com/royalcollegehorana" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/royalcollegehorana" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@royalcollegehorana" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/94342261096" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center mt-12 text-white/50 text-sm border-t border-white/10 pt-6">
+      © 2026 Royal College Horana. All Rights Reserved.
+    </div>
+
+  </div>
+</footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    tailwind.config = { content: ["./**/*.{html,js}"], theme: { extend: { colors: { gold: "#F4C430" } } } };
+
+    // 48 Years Animation
+    function animateYears() {
+      let count = 0;
+      const target = 48;
+      const timer = setInterval(() => {
+        count += 2;
+        document.getElementById('years-count').textContent = count + " Years of Commitment & Excellence";
+        if (count >= target) {
+          document.getElementById('years-count').innerHTML = `<span class="text-6xl font-black text-gold">48</span> Years of Commitment & Excellence`;
+          clearInterval(timer);
+        }
+      }, 60);
+    }
+
+    // Auto trigger on load
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById('loader').style.opacity = '0';
+        setTimeout(() => document.getElementById('loader').style.display = 'none', 800);
+      }, 1200);
+      setTimeout(animateYears, 800);
+    };
+
+    // Scroll reveal for timeline (simple)
+    window.addEventListener('scroll', () => {
+      document.querySelectorAll('.glass').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight * 0.8) {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

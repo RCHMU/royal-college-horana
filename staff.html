@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="si" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Staff | Royal College Horana | රාජකීය විද්‍යාලය හොරණ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;700&display=swap');
+    :root { --purple: #4C1D95; --gold: #F4C430; }
+    .glass { background: rgba(255,255,255,0.15); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.2); }
+    .teacher-card { transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .teacher-card:hover { transform: perspective(1000px) rotateY(12deg) rotateX(10deg) scale(1.08); box-shadow: 0 0 35px #F4C430, 0 25px 50px -12px rgb(0 0 0 / 0.5); }
+    .subject-card { cursor: pointer; transition: all 0.3s; }
+    .subject-card.active { background-color: #F4C430 !important; color: #2A1B4B; font-weight: bold; }
+  </style>
+</head>
+<body class="bg-[#2A1B4B] text-white font-sans">
+
+  
+
+ <!-- RESPONSIVE NAVBAR - MOBILE HAMBURGER + ASSOCIATIONS DROPDOWN -->
+<nav class="fixed top-0 w-full glass z-50 border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="assets/images/logo.png" class="w-12 h-12 md:w-14 md:h-14" alt="Logo">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold tracking-tighter">Royal College Horana</h1>
+        <p class="text-gold text-xs md:text-sm -mt-1">1978</p>
+      </div>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex gap-8 text-sm font-medium items-center">
+      <a href="index.html" class="hover:text-gold">Home</a>
+      <a href="about.html" class="hover:text-gold">About</a>
+      <a href="history.html" class="hover:text-gold">History</a>
+      <a href="staff.html" class="hover:text-gold">Staff</a>
+      <a href="events.html" class="hover:text-gold">Events</a>
+      <a href="contact.html" class="hover:text-gold">Contact</a>
+      
+      <!-- Associations Dropdown (Right Side + Wider) -->
+      <div id="associations-dropdown" class="group relative">
+        <a href="associations.html" class="hover:text-gold flex items-center gap-1">
+          Associations <i class="fa-solid fa-chevron-down text-xs"></i>
+        </a>
+        <div id="dropdown-menu" class="hidden group-hover:block absolute top-full right-0 mt-2 w-72 glass rounded-3xl py-4 shadow-2xl z-50 bg-[#2A1B4B]/95 border border-gold/30">
+          <a href="media-unit.html" class="block px-6 py-3 hover:bg-white/10">Media Unit</a>
+          <a href="ict-society.html" class="block px-6 py-3 hover:bg-white/10">ICT Society</a>
+          <a href="science-society.html" class="block px-6 py-3 hover:bg-white/10">Science Society</a>
+          <a href="photography-club.html" class="block px-6 py-3 hover:bg-white/10">Photography Club</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button id="mobile-menu-btn" class="md:hidden text-3xl">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 px-6 py-6">
+    <div class="flex flex-col gap-6 text-lg font-medium">
+      <a href="index.html" class="hover:text-gold">Home</a>
+      <a href="about.html" class="hover:text-gold">About</a>
+      <a href="history.html" class="hover:text-gold">History</a>
+      <a href="staff.html" class="hover:text-gold">Staff</a>
+      <a href="events.html" class="hover:text-gold">Events</a>
+      <a href="associations.html" class="hover:text-gold">Associations</a>
+      <a href="contact.html" class="hover:text-gold">Contact</a>
+    </div>
+  </div>
+</nav>
+<script>
+// Mobile Hamburger Menu
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+mobileBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('hidden');
+  mobileBtn.innerHTML = mobileMenu.classList.contains('hidden') 
+    ? '<i class="fa-solid fa-bars"></i>' 
+    : '<i class="fa-solid fa-xmark"></i>';
+});
+
+// Associations Dropdown Delay (already stable)
+let timeoutId;
+const dropdownContainer = document.getElementById('associations-dropdown');
+const dropdownMenu = document.getElementById('dropdown-menu');
+
+dropdownContainer.addEventListener('mouseenter', () => {
+  clearTimeout(timeoutId);
+  dropdownMenu.classList.remove('hidden');
+});
+
+dropdownContainer.addEventListener('mouseleave', () => {
+  timeoutId = setTimeout(() => dropdownMenu.classList.add('hidden'), 400);
+});
+</script>
+
+  <!-- Hero -->
+  <div class="relative h-[55vh] pt-20 bg-cover bg-center" style="background-image: url('https://picsum.photos/id/201/1920/800')">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/60 to-black/80"></div>
+    <div class="absolute inset-0 flex items-center">
+      <div class="max-w-6xl mx-auto px-6 text-center">
+        <h1 class="text-6xl font-black">Our Dedicated Staff</h1>
+        <p class="text-3xl text-gold mt-4">Leadership • Teachers • Support Team</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Principal -->
+  <section class="py-20 bg-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-12">Principal's Message</h2>
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div class="text-center">
+          <img src="https://picsum.photos/id/64/280/280" class="mx-auto rounded-full border-8 border-gold shadow-2xl">
+          <h3 class="text-3xl font-bold mt-6">Mr. V.R.P. Kumara</h3>
+          <p class="text-gold">Principal • Royal College Horana</p>
+        </div>
+        <div class="glass p-10 rounded-3xl leading-relaxed text-lg">
+          <p>"Dear students and parents,<br><br>It is my great honor to lead this prestigious institution that has been shaping young minds for 48 years. At Royal College Horana, we believe in nurturing not only academic excellence but also strong character, discipline and leadership. Together, let us continue this journey of success.<br><br>Thank you.<br>V.R.P. Kumara<br>Principal"</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEW: Principals' Board - 3 Centered Cards (Above Principal's Message) -->
+  <section class="py-16 bg-[#1A1238]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-12 text-gold">Principals' Board</h2>
+      <div class="flex flex-wrap justify-center gap-10">
+        
+        <!-- Card 1 -->
+        <div class="glass p-8 rounded-3xl text-center teacher-card w-72">
+          <img src="https://picsum.photos/id/64/160/160" class="mx-auto rounded-full border-4 border-gold w-36 h-36 object-cover">
+          <h3 class="font-bold text-xl mt-5">Mr. V.R.P. Kumara</h3>
+          <p class="text-gold text-sm">Principal (2020 - Present)</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="glass p-8 rounded-3xl text-center teacher-card w-72">
+          <img src="https://picsum.photos/id/201/160/160" class="mx-auto rounded-full border-4 border-gold w-36 h-36 object-cover">
+          <h3 class="font-bold text-xl mt-5">Mr. A.B.C. Silva</h3>
+          <p class="text-gold text-sm">Principal (2010 - 2020)</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="glass p-8 rounded-3xl text-center teacher-card w-72">
+          <img src="https://picsum.photos/id/301/160/160" class="mx-auto rounded-full border-4 border-gold w-36 h-36 object-cover">
+          <h3 class="font-bold text-xl mt-5">Mr. D.E.F. Perera</h3>
+          <p class="text-gold text-sm">Founding Principal (1978 - 2010)</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Sectional Heads - PHOTOS ONLY (no stickers) -->
+  <section class="py-20 bg-[#1A1238]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-12">Sectional Heads (Grades 1-13)</h2>
+      <div class="grid md:grid-cols-5 gap-6">
+        <div class="glass p-6 rounded-3xl text-center teacher-card">
+          <img src="https://picsum.photos/id/64/110/110" class="mx-auto rounded-full border-4 border-gold w-28 h-28 object-cover">
+          <h3 class="font-bold mt-4">Mrs. S. Perera</h3>
+          <p class="text-gold text-sm">Head of Primary (Grades 1-5)</p>
+        </div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card">
+          <img src="https://picsum.photos/id/201/110/110" class="mx-auto rounded-full border-4 border-gold w-28 h-28 object-cover">
+          <h3 class="font-bold mt-4">Mr. K. Fernando</h3>
+          <p class="text-gold text-sm">Head of Grades 6-7</p>
+        </div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card">
+          <img src="https://picsum.photos/id/301/110/110" class="mx-auto rounded-full border-4 border-gold w-28 h-28 object-cover">
+          <h3 class="font-bold mt-4">Mrs. A. Jayasinghe</h3>
+          <p class="text-gold text-sm">Head of Grades 8-9</p>
+        </div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card">
+          <img src="https://picsum.photos/id/401/110/110" class="mx-auto rounded-full border-4 border-gold w-28 h-28 object-cover">
+          <h3 class="font-bold mt-4">Mr. D. Bandara</h3>
+          <p class="text-gold text-sm">Head of Grade 10</p>
+        </div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card">
+          <img src="https://picsum.photos/id/501/110/110" class="mx-auto rounded-full border-4 border-gold w-28 h-28 object-cover">
+          <h3 class="font-bold mt-4">Mrs. N. Silva</h3>
+          <p class="text-gold text-sm">Head of Grade 11</p>
+        </div>
+      </div>
+
+      <!-- Centered Grade 12 & 13 -->
+      <div class="flex justify-center gap-12 mt-12">
+        <div class="glass p-8 rounded-3xl text-center teacher-card w-80">
+          <img src="https://picsum.photos/id/64/140/140" class="mx-auto rounded-full border-4 border-gold w-32 h-32 object-cover">
+          <h3 class="font-bold text-xl mt-4">Mr. R. Wickramasinghe</h3>
+          <p class="text-gold">Head of Grade 12</p>
+        </div>
+        <div class="glass p-8 rounded-3xl text-center teacher-card w-80">
+          <img src="https://picsum.photos/id/201/140/140" class="mx-auto rounded-full border-4 border-gold w-32 h-32 object-cover">
+          <h3 class="font-bold text-xl mt-4">Mrs. L. Perera</h3>
+          <p class="text-gold">Head of Grade 13 (A/L)</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Teaching Staff - NOW 13 SUBJECTS + A/L SUBJECTS -->
+  <section class="py-20 bg-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-8">Our Teaching Staff (Grades 1-13)</h2>
+      <p class="text-center text-gold mb-10">Click any subject to view teachers • Click again to hide</p>
+
+      <div class="grid grid-cols-3 md:grid-cols-5 lg:grid-cols-7 gap-4 mb-12" id="subjectGrid">
+        <div onclick="toggleSubject(this, 'Math')" class="subject-card glass p-6 rounded-3xl text-center">📐 Mathematics</div>
+        <div onclick="toggleSubject(this, 'Science')" class="subject-card glass p-6 rounded-3xl text-center">🔬 Science</div>
+        <div onclick="toggleSubject(this, 'English')" class="subject-card glass p-6 rounded-3xl text-center">📖 English</div>
+        <div onclick="toggleSubject(this, 'Sinhala')" class="subject-card glass p-6 rounded-3xl text-center">🇱🇰 Sinhala</div>
+        <div onclick="toggleSubject(this, 'ICT')" class="subject-card glass p-6 rounded-3xl text-center">💻 ICT & Media</div>
+        <div onclick="toggleSubject(this, 'History')" class="subject-card glass p-6 rounded-3xl text-center">📜 History & Civics</div>
+        <div onclick="toggleSubject(this, 'Buddhism')" class="subject-card glass p-6 rounded-3xl text-center">🙏 Buddhism</div>
+      </div>
+
+      <!-- CENTERED: Geography + A/L Subjects -->
+      <div class="flex justify-center gap-6 mb-12 flex-wrap">
+        <div onclick="toggleSubject(this, 'Geography')" class="subject-card glass p-6 rounded-3xl text-center ">🌍 Geography</div>
+        <div onclick="toggleSubject(this, 'Commerce')" class="subject-card glass p-6 rounded-3xl text-center ">💼 Commerce </div>
+        <div onclick="toggleSubject(this, 'Economics')" class="subject-card glass p-6 rounded-3xl text-center ">📊 Economics </div>
+        <div onclick="toggleSubject(this, 'Biology')" class="subject-card glass p-6 rounded-3xl text-center ">🧬 Biology </div>
+        <div onclick="toggleSubject(this, 'Physics')" class="subject-card glass p-6 rounded-3xl text-center ">⚛️ Physics </div>
+        <div onclick="toggleSubject(this, 'Chemistry')" class="subject-card glass p-6 rounded-3xl text-center ">🧪 Chemistry </div>
+      </div>
+
+      <div id="subjectTeachers" class="grid grid-cols-2 md:grid-cols-4 gap-6 min-h-[200px]"></div>
+    </div>
+  </section>
+
+  <!-- Non-Academic Staff - NO PHOTOS, NO STICKERS, NO EMOJIS -->
+  <section class="py-20 bg-[#1A1238]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-12">Non-Academic Staff</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div class="glass p-6 rounded-3xl text-center teacher-card"><h4 class="font-bold">Mr. T. Gunawardena</h4><p class="text-gold">Accountant</p></div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card"><h4 class="font-bold">Mrs. K. Weerasinghe</h4><p class="text-gold">Administrative Officer</p></div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card"><h4 class="font-bold">Mr. S. Perera</h4><p class="text-gold">Clerk</p></div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card"><h4 class="font-bold">Mrs. N. Silva</h4><p class="text-gold">Librarian</p></div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card"><h4 class="font-bold">Mr. R. Fernando</h4><p class="text-gold">Lab Assistant</p></div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card"><h4 class="font-bold">Mrs. D. Jayawardena</h4><p class="text-gold">Receptionist</p></div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card"><h4 class="font-bold">Mr. P. Sampath</h4><p class="text-gold">Office Assistant</p></div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card"><h4 class="font-bold">Mrs. R. Fernando</h4><p class="text-gold">Store Keeper</p></div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card"><h4 class="font-bold">Mr. K. Abeywickrama</h4><p class="text-gold">Security Officer</p></div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card"><h4 class="font-bold">Mrs. S. Perera</h4><p class="text-gold">Peon</p></div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card"><h4 class="font-bold">Mr. D. Bandara</h4><p class="text-gold">Driver</p></div>
+        <div class="glass p-6 rounded-3xl text-center teacher-card"><h4 class="font-bold">Mrs. L. Silva</h4><p class="text-gold">Cleaner Supervisor</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- sport Staff -->
+  <section class="py-20 bg-[#1A1238]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-12">Support Staff</h2>
+      <div class="glass p-10 rounded-3xl max-w-3xl mx-auto">
+        <ul class="grid grid-cols-2 gap-4 text-lg">
+          <li>✅ Mr. T. Gunawardena - Accountant</li>
+          <li>✅ Mrs. K. Weerasinghe - Administrative Officer</li>
+          <li>✅ Mr. S. Perera - Clerk</li>
+          <li>✅ Mrs. N. Silva - Librarian</li>
+          <li>✅ Mr. R. Fernando - Lab Assistant</li>
+          <li>✅ Mrs. D. Jayawardena - Receptionist</li>
+        </ul>
+        <p class="text-center mt-8 text-gold font-medium">Our hardworking non-academic team ❤️</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPDATED FOOTER WITH CLICKABLE SOCIAL ICONS -->
+<footer class="glass py-12 border-t border-gold/30">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+      
+      <!-- Left: Logo -->
+      <div class="flex items-center gap-4">
+        <img src="assets/images/logo.png" class="w-14 h-14" alt="Logo">
+        <div>
+          <h3 class="text-2xl font-bold text-gold">Royal College Horana</h3>
+          <p class="text-sm text-white/70">1978 • විද්‍යා දදාති විනයන්</p>
+        </div>
+      </div>
+
+      <!-- Center: Contact -->
+      <div class="text-center md:text-left">
+        <p class="text-xl font-medium">Phone: <span class="text-gold">034 2261096</span></p>
+        <p class="text-xl font-medium mt-1">Email: <span class="text-gold">royalcollegehorana2017@gmail.com</span></p>
+        <p class="text-lg mt-3">Royal College, Horana</p>
+      </div>
+
+      <!-- Right: Social Icons (Clickable + New Tab) -->
+      <div class="flex gap-7 text-3xl text-gold">
+        <a href="https://www.facebook.com/royalcollegehorana" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/royalcollegehorana" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@royalcollegehorana" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/94342261096" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center mt-12 text-white/50 text-sm border-t border-white/10 pt-6">
+      © 2026 Royal College Horana. All Rights Reserved.
+    </div>
+
+  </div>
+</footer>
+
+  <script>
+    tailwind.config = { content: ["./**/*.{html,js}"], theme: { extend: { colors: { gold: "#F4C430" } } } };
+
+    let currentSubject = null;
+
+    function toggleSubject(el, sub) {
+      const area = document.getElementById('subjectTeachers');
+      const allCards = document.querySelectorAll('.subject-card');
+
+      if (currentSubject === sub) {
+        area.innerHTML = '';
+        currentSubject = null;
+        allCards.forEach(c => c.classList.remove('active'));
+      } else {
+        allCards.forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+        currentSubject = sub;
+
+        let html = `<h3 class="col-span-full text-2xl font-bold text-gold mb-6">${sub} Teachers (Grades 1-13)</h3>`;
+
+        // 4 cards with photos
+        if (sub === 'Math') {
+          html += `
+            <div class="teacher-card glass p-6 rounded-3xl text-center"><img src="https://picsum.photos/id/64/110/110" class="mx-auto rounded-full"><h4 class="font-bold mt-4">Mr. R. Wickramasinghe</h4><p class="text-gold">Senior Math</p></div>
+            <div class="teacher-card glass p-6 rounded-3xl text-center"><img src="https://picsum.photos/id/201/110/110" class="mx-auto rounded-full"><h4 class="font-bold mt-4">Mrs. L. Perera</h4><p class="text-gold">Junior Math</p></div>
+            <div class="teacher-card glass p-6 rounded-3xl text-center"><img src="https://picsum.photos/id/301/110/110" class="mx-auto rounded-full"><h4 class="font-bold mt-4">Mr. D. Silva</h4><p class="text-gold">O/L Math</p></div>
+            <div class="teacher-card glass p-6 rounded-3xl text-center"><img src="https://picsum.photos/id/401/110/110" class="mx-auto rounded-full"><h4 class="font-bold mt-4">Mrs. S. Abeywardena</h4><p class="text-gold">A/L Pure Math</p></div>
+          `;
+        } else {
+          // Other subjects also have 4 photo cards
+          html += `
+            <div class="teacher-card glass p-6 rounded-3xl text-center"><img src="https://picsum.photos/id/501/110/110" class="mx-auto rounded-full"><h4 class="font-bold mt-4">Teacher 1</h4><p class="text-gold">Subject Teacher</p></div>
+            <div class="teacher-card glass p-6 rounded-3xl text-center"><img src="https://picsum.photos/id/64/110/110" class="mx-auto rounded-full"><h4 class="font-bold mt-4">Teacher 2</h4><p class="text-gold">Subject Teacher</p></div>
+            <div class="teacher-card glass p-6 rounded-3xl text-center"><img src="https://picsum.photos/id/201/110/110" class="mx-auto rounded-full"><h4 class="font-bold mt-4">Teacher 3</h4><p class="text-gold">Subject Teacher</p></div>
+            <div class="teacher-card glass p-6 rounded-3xl text-center"><img src="https://picsum.photos/id/301/110/110" class="mx-auto rounded-full"><h4 class="font-bold mt-4">Teacher 4</h4><p class="text-gold">Subject Teacher</p></div>
+          `;
+        }
+        area.innerHTML = html;
+      }
+    }
+
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById('loader').style.opacity = '0';
+        setTimeout(() => document.getElementById('loader').style.display = 'none', 800);
+      }, 1200);
+    };
+  </script>
+</body>
+</html>

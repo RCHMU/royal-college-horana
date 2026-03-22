@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="si" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Royal College Horana | රාජකීය විද්‍යාලය හොරණ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;700&display=swap');
+    :root { --purple: #811397; --gold: #F4C430; }
+    .glass { background: rgba(255,255,255,0.15); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.2); }
+    .house-card { transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .house-card:hover { transform: perspective(1200px) rotateY(15deg) rotateX(8deg) scale(1.1); box-shadow: 0 0 40px #F4C430, 0 30px 60px -15px rgb(244 196 48 / 0.6); }
+    .stat-number { font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body class="bg-[#2A1B4B] text-white font-sans">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+
+  
+<!-- NEW CINEMATIC LOADING SCREEN -->
+<div id="loader" class="fixed inset-0 bg-[#2A1B4B] flex items-center justify-center z-[9999] overflow-hidden">
+  
+  <!-- Particles Canvas -->
+  <canvas id="particles" class="absolute inset-0 pointer-events-none"></canvas>
+
+  <div class="text-center relative z-10">
+    
+    <!-- Logo -->
+    <img id="logo" 
+         src="assets/images/logo.png" 
+         class="w-56 h-56 mx-auto mb-8 drop-shadow-2xl scale-0"
+         alt="Royal College Horana Logo">
+
+    <!-- Title -->
+    <h1 id="title" 
+        class="text-6xl font-black tracking-[6px] text-white opacity-0 translate-y-10">
+      ROYAL COLLEGE
+    </h1>
+    
+    <!-- Subtitle -->
+    <p id="subtitle" 
+       class="text-gold text-3xl font-medium mt-3 opacity-0 translate-y-10">
+      Horana • 1978
+    </p>
+
+    <!-- Typing Motto -->
+    <p id="motto" 
+       class="text-2xl font-medium text-white/90 mt-10 h-10 tracking-widest">
+    </p>
+
+  </div>
+</div>
+
+  <!-- RESPONSIVE NAVBAR -->
+  <nav class="fixed top-0 w-full glass z-50 border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="assets/images/logo.png" class="w-12 h-12" alt="Logo">
+        <div>
+          <h1 class="text-2xl md:text-3xl font-bold tracking-tighter">Royal College Horana</h1>
+          <p class="text-gold text-xs md:text-sm -mt-1">1978</p>
+        </div>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex gap-8 text-sm font-medium items-center">
+        <a href="index.html" class="hover:text-gold">Home</a>
+        <a href="about.html" class="hover:text-gold">About</a>
+        <a href="history.html" class="hover:text-gold">History</a>
+        <a href="staff.html" class="hover:text-gold">Staff</a>
+        <a href="events.html" class="hover:text-gold">Events</a>
+        <a href="contact.html" class="hover:text-gold">Contact</a>
+        
+        <!-- Associations Dropdown (Right Side) -->
+        <div id="associations-dropdown" class="group relative">
+          <a href="associations.html" class="hover:text-gold flex items-center gap-1">
+            Associations <i class="fa-solid fa-chevron-down text-xs"></i>
+          </a>
+          <div id="dropdown-menu" class="hidden group-hover:block absolute top-full right-0 mt-2 w-72 glass rounded-3xl py-4 shadow-2xl z-50 bg-[#2A1B4B]/95 border border-gold/30">
+            <a href="media-unit.html" class="block px-6 py-3 hover:bg-white/10">Media Unit</a>
+            <a href="ict-society.html" class="block px-6 py-3 hover:bg-white/10">ICT Society</a>
+            <a href="science-society.html" class="block px-6 py-3 hover:bg-white/10">Science Society</a>
+            <a href="photography-club.html" class="block px-6 py-3 hover:bg-white/10">Photography Club</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button id="mobile-menu-btn" class="md:hidden text-3xl">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 px-6 py-6">
+      <div class="flex flex-col gap-6 text-lg font-medium">
+        <a href="index.html" class="hover:text-gold">Home</a>
+        <a href="about.html" class="hover:text-gold">About</a>
+        <a href="history.html" class="hover:text-gold">History</a>
+        <a href="staff.html" class="hover:text-gold">Staff</a>
+        <a href="events.html" class="hover:text-gold">Events</a>
+        <a href="associations.html" class="hover:text-gold">Associations</a>
+        <a href="contact.html" class="hover:text-gold">Contact</a>
+      </div>
+    </div>
+  </nav>
+  <script>
+// Mobile Hamburger Menu
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+mobileBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('hidden');
+  mobileBtn.innerHTML = mobileMenu.classList.contains('hidden') 
+    ? '<i class="fa-solid fa-bars"></i>' 
+    : '<i class="fa-solid fa-xmark"></i>';
+});
+
+// Associations Dropdown Delay (already stable)
+let timeoutId;
+const dropdownContainer = document.getElementById('associations-dropdown');
+const dropdownMenu = document.getElementById('dropdown-menu');
+
+dropdownContainer.addEventListener('mouseenter', () => {
+  clearTimeout(timeoutId);
+  dropdownMenu.classList.remove('hidden');
+});
+
+dropdownContainer.addEventListener('mouseleave', () => {
+  timeoutId = setTimeout(() => dropdownMenu.classList.add('hidden'), 400);
+});
+</script>
+
+  <!-- Hero Slider (පෙර විදිහටම) -->
+ <div class="relative h-screen pt-20 overflow-hidden">
+  <div class="swiper hero-swiper h-full">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide bg-cover bg-center" style="background-image: url('https://picsum.photos/id/1015/1920/1080')">
+        
+        <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent flex items-center justify-start">
+          
+          <div class="max-w-5xl ml-10 md:ml-20 px-6 text-left text-white">
+            <h1 class="text-6xl md:text-7xl font-black leading-tight">Welcome to</h1>
+            <h2 class="text-5xl md:text-6xl font-bold text-gold">Royal College Horana</h2>
+            <p class="mt-6 text-4xl font-semibold">"Learning Today, Leading Tomorrow"</p>
+            <p class="mt-8 text-2xl italic">"We are a team of talented students of RCH"</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+
+  <!-- School Information (පෙර විදිහටම) -->
+  <section class="py-20 bg-white/5">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="glass p-8 rounded-3xl"><h3 class="text-gold text-2xl font-bold mb-4">Vision</h3><p class="text-lg">To produce disciplined, intelligent and virtuous citizens for the nation.</p></div>
+      <div class="glass p-8 rounded-3xl"><h3 class="text-gold text-2xl font-bold mb-4">Mission</h3><p class="text-lg">To mould students with academic excellence, moral values and leadership skills.</p></div>
+      <div class="glass p-8 rounded-3xl text-center"><h3 class="text-gold text-xl">Motto</h3><p class="text-3xl font-bold mt-4">විද්‍යා දදාති විනයන්</p></div>
+      <div class="glass p-8 rounded-3xl text-center"><h3 class="text-gold text-xl mb-4">School Song</h3><button onclick="showLyrics()" class="px-8 py-4 bg-gold text-black font-bold rounded-3xl hover:scale-110 transition">Read School Song Lyrics <i class="fa-solid fa-book ml-2"></i></button></div>
+    </div>
+  </section>
+
+  <!-- 48 Years Scrolling Animation Box + Stats (About Us) -->
+  <section id="about" class="py-20 bg-[#1A1238]">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <img src="assets/images/logo.png" class="w-32 mx-auto mb-6">
+      <h2 class="text-5xl font-bold">1979 - 2026</h2>
+      <p class="text-gold text-4xl font-semibold">49 Years of Commitment & Excellence</p>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
+        <div class="glass p-8 rounded-3xl"><p class="text-6xl font-bold text-gold stat-number" id="students">4000</p><p class="text-xl mt-2">Students</p></div>
+        <div class="glass p-8 rounded-3xl"><p class="text-6xl font-bold text-gold stat-number" id="teachers">150</p><p class="text-xl mt-2">Teachers</p></div>
+        <div class="glass p-8 rounded-3xl"><p class="text-6xl font-bold text-gold stat-number" id="societies">23</p><p class="text-xl mt-2">Societies</p></div>
+        <div class="glass p-8 rounded-3xl"><p class="text-6xl font-bold text-gold">1-13</p><p class="text-xl mt-2">Grades</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Updated Examination Results with images -->
+  <section class="py-20 bg-white/5 text-center">
+    <h2 class="text-5xl font-bold mb-12">2025 Examination Results</h2>
+    <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-16">
+      <!-- O/L -->
+      <div>
+        <img src="sssssssssssssssssssssssssssssssssssssssssssssssss" class="mx-auto rounded-3xl shadow-2xl mb-8" alt="O/L Exam">
+        <h3 class="text-3xl font-bold">O/L Pass Rate</h3>
+        <p id="ol-rate" class="stat-number text-8xl font-bold text-gold">98.5%</p>
+        <p class="text-xl mt-4">overall success rate in the G.C.E ordinary level examination 2025</p>
+      </div>
+      <!-- A/L -->
+      <div>
+        <img src="ssssssssssssssssssssssssssssssssssssssssssssssssssssss" class="mx-auto rounded-3xl shadow-2xl mb-8" alt="A/L Exam">
+        <h3 class="text-3xl font-bold">A/L Pass Rate</h3>
+        <p id="al-rate" class="stat-number text-8xl font-bold text-gold">94%</p>
+        <p class="text-xl mt-4">overall success rate in the G.C.E advanced examination 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- School Houses - NEW SECTION -->
+  <section class="py-20 bg-[#1A1238]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-12">Our School Houses</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <!-- Blue - Prasaadha -->
+        <div class="house-card glass p-8 rounded-3xl text-center border-t-8 border-blue-600">
+          <p class="text-6xl">🔵</p>
+          <h3 class="text-3xl font-bold text-blue-400 mt-4">Prasaadha House</h3>
+          <p class="text-gold">Blue House</p>
+        </div>
+        <!-- Red - Prabodha -->
+        <div class="house-card glass p-8 rounded-3xl text-center border-t-8 border-red-600">
+          <p class="text-6xl">🔴</p>
+          <h3 class="text-3xl font-bold text-red-400 mt-4">Prabodha House</h3>
+          <p class="text-gold">Red House</p>
+        </div>
+        <!-- Yellow - Pradheepa -->
+        <div class="house-card glass p-8 rounded-3xl text-center border-t-8 border-yellow-500">
+          <p class="text-6xl">🟡</p>
+          <h3 class="text-3xl font-bold text-yellow-400 mt-4">Pradheepa House</h3>
+          <p class="text-gold">Yellow House</p>
+        </div>
+        <!-- Green - Praveena -->
+        <div class="house-card glass p-8 rounded-3xl text-center border-t-8 border-green-600">
+          <p class="text-6xl">🟢</p>
+          <h3 class="text-3xl font-bold text-green-400 mt-4">Praveena House</h3>
+          <p class="text-gold">Green House</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Royal College Horana? Box -->
+  <section class="py-20 bg-[#1A1238]">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="glass p-12 rounded-3xl text-center">
+        <h2 class="text-5xl font-bold mb-8 text-gold">Why Choose Royal College Horana?</h2>
+        <div class="grid md:grid-cols-2 gap-8 text-left text-lg">
+          <div class="flex gap-4"><span class="text-3xl">🏆</span><p>98.5% O/L & 94% A/L pass rates with excellent results every year</p></div>
+          <div class="flex gap-4"><span class="text-3xl">📚</span><p>Modern smart classrooms, science labs & fully equipped library</p></div>
+          <div class="flex gap-4"><span class="text-3xl">🎵</span><p>23 active societies, sports teams & cultural activities</p></div>
+          <div class="flex gap-4"><span class="text-3xl">👨‍🎓</span><p>48 years of discipline, leadership & producing successful alumni</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- UPDATED FOOTER WITH CLICKABLE SOCIAL ICONS -->
+<footer class="glass py-12 border-t border-gold/30">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+      
+      <!-- Left: Logo -->
+      <div class="flex items-center gap-4">
+        <img src="assets/images/logo.png" class="w-14 h-14" alt="Logo">
+        <div>
+          <h3 class="text-2xl font-bold text-gold">Royal College Horana</h3>
+          <p class="text-sm text-white/70">1978 • විද්‍යා දදාති විනයන්</p>
+        </div>
+      </div>
+
+      <!-- Center: Contact -->
+      <div class="text-center md:text-left">
+        <p class="text-xl font-medium">Phone: <span class="text-gold">034 2261096</span></p>
+        <p class="text-xl font-medium mt-1">Email: <span class="text-gold">royalcollegehorana2017@gmail.com</span></p>
+        <p class="text-lg mt-3">Royal College, Horana</p>
+      </div>
+
+      <!-- Right: Social Icons (Clickable + New Tab) -->
+      <div class="flex gap-7 text-3xl text-gold">
+        <a href="https://www.facebook.com/royalcollegehorana" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/royalcollegehorana" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@royalcollegehorana" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/94342261096" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center mt-12 text-white/50 text-sm border-t border-white/10 pt-6">
+      © 2026 Royal College Horana. All Rights Reserved.
+    </div>
+
+  </div>
+</footer>
+
+  <!-- Lyrics Modal (පෙර විදිහටම) -->
+  <div id="lyricsModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[9999]">
+    <div class="glass max-w-2xl w-full mx-4 p-10 rounded-3xl text-center">
+      <h2 class="text-3xl font-bold mb-6">School Song Lyrics</h2>
+      <p class="text-lg leading-relaxed">School Song</p>
+      <button onclick="hideLyrics()" class="mt-8 px-8 py-3 bg-gold text-black rounded-3xl">Close</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script>
+    tailwind.config = { content: ["./**/*.{html,js}"], theme: { extend: { colors: { gold: "#F4C430" } } } };
+
+    new Swiper('.hero-swiper', { loop: true, autoplay: { delay: 4000 }, pagination: { el: '.swiper-pagination', clickable: true }, effect: "fade" });
+
+    // Scrolling Animation Counters
+    function animateCounter(id, target, duration) {
+      let start = 0;
+      const step = target / (duration / 16);
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= target) {
+          document.getElementById(id).textContent = Math.floor(target) + (id === 'students' || id === 'teachers' ? '+' : '');
+          clearInterval(timer);
+        } else {
+          document.getElementById(id).textContent = Math.floor(start) + (id === 'students' || id === 'teachers' ? '+' : '');
+        }
+      }, 16);
+    }
+
+    // Trigger on scroll
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter('students', 4000, 1800);
+          animateCounter('teachers', 150, 1800);
+          animateCounter('societies', 23, 1200);
+          statsObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.6 });
+
+    window.onload = () => {
+      setTimeout(() => {
+        document.getElementById('loader').style.opacity = '0';
+        setTimeout(() => document.getElementById('loader').style.display = 'none', 800);
+      }, 1500);
+      statsObserver.observe(document.getElementById('about'));
+    };
+
+    function showLyrics() { document.getElementById('lyricsModal').classList.remove('hidden'); }
+    function hideLyrics() { document.getElementById('lyricsModal').classList.add('hidden'); }
+  </script>
+
+  <script>
+  window.onload = () => {
+    const logo = document.getElementById('logo');
+    const title = document.getElementById('title');
+    const subtitle = document.getElementById('subtitle');
+    const motto = document.getElementById('motto');
+    const loader = document.getElementById('loader');
+
+    // Step 1: Logo scale + spin
+    setTimeout(() => {
+      logo.classList.remove('scale-0');
+      logo.classList.add('scale-100');
+    }, 300);
+
+    // Step 2: Title fade in
+    setTimeout(() => {
+      title.classList.remove('opacity-0', 'translate-y-8');
+      title.classList.add('opacity-100', 'translate-y-0');
+    }, 1200);
+
+    // Step 3: Subtitle fade in
+    setTimeout(() => {
+      subtitle.classList.remove('opacity-0', 'translate-y-8');
+      subtitle.classList.add('opacity-100', 'translate-y-0');
+    }, 1600);
+
+    // Step 4: Motto fade in
+    setTimeout(() => {
+      motto.classList.remove('opacity-0', 'translate-y-8');
+      motto.classList.add('opacity-100', 'translate-y-0');
+    }, 2100);
+
+    // Step 5: Fade out entire loader
+    setTimeout(() => {
+      loader.style.transition = 'opacity 1.2s ease';
+      loader.style.opacity = '0';
+      
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 1300);
+    }, 3200);
+  };
+</script>
+
+<script>
+// ====================== CINEMATIC LOADING ANIMATION ======================
+window.onload = () => {
+  const logo = document.getElementById('logo');
+  const title = document.getElementById('title');
+  const subtitle = document.getElementById('subtitle');
+  const motto = document.getElementById('motto');
+  const loader = document.getElementById('loader');
+
+  // 1. Logo slow scale + spin
+  setTimeout(() => {
+    logo.style.transition = 'all 2.8s cubic-bezier(0.25, 0.1, 0.25, 1)';
+    logo.classList.remove('scale-0');
+    logo.classList.add('scale-100');
+  }, 400);
+
+  // 2. Title fade in (slow)
+  setTimeout(() => {
+    title.style.transition = 'all 2s ease';
+    title.classList.remove('opacity-0', 'translate-y-10');
+    title.classList.add('opacity-100', 'translate-y-0');
+  }, 1800);
+
+  // 3. Subtitle fade in (slow)
+  setTimeout(() => {
+    subtitle.style.transition = 'all 2.2s ease';
+    subtitle.classList.remove('opacity-0', 'translate-y-10');
+    subtitle.classList.add('opacity-100', 'translate-y-0');
+  }, 2600);
+
+  // 4. Typing Effect for Motto
+  const mottoText = "විද්‍යා දදාති විනයන්";
+  let i = 0;
+  setTimeout(() => {
+    const typeInterval = setInterval(() => {
+      motto.textContent += mottoText[i];
+      i++;
+      if (i === mottoText.length) clearInterval(typeInterval);
+    }, 120); // slow typing
+  }, 3400);
+
+  // 5. Final fade out (very slow & elegant)
+  setTimeout(() => {
+    loader.style.transition = 'opacity 1.8s ease';
+    loader.style.opacity = '0';
+    setTimeout(() => loader.style.display = 'none', 1900);
+  }, 5200);
+};
+
+// ====================== GOLD PARTICLES ======================
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 1;
+    this.speed = Math.random() * 0.6 + 0.3;
+    this.opacity = Math.random() * 0.6 + 0.3;
+  }
+  update() {
+    this.y -= this.speed;
+    if (this.y < 0) this.y = canvas.height;
+  }
+  draw() {
+    ctx.fillStyle = `rgba(244, 196, 48, ${this.opacity})`;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  particles.forEach(p => {
+    p.update();
+    p.draw();
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+window.addEventListener('resize', () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+</script>
+
+</body>
+</html>

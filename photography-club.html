@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="si" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Photography Club | Royal College Horana</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Noto+Sans+Sinhala:wght@400;500;700&display=swap');
+    :root { --purple: #4C1D95; --gold: #F4C430; }
+    .glass { background: rgba(255,255,255,0.15); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.2); }
+    .club-card { transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    .club-card:hover { transform: scale(1.05); box-shadow: 0 0 40px #F4C430; }
+  </style>
+</head>
+<body class="bg-[#2A1B4B] text-white font-sans">
+
+ <!-- RESPONSIVE NAVBAR - MOBILE HAMBURGER + ASSOCIATIONS DROPDOWN -->
+<nav class="fixed top-0 w-full glass z-50 border-b border-white/10">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="assets/images/logo.png" class="w-12 h-12 md:w-14 md:h-14" alt="Logo">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold tracking-tighter">Royal College Horana</h1>
+        <p class="text-gold text-xs md:text-sm -mt-1">1978</p>
+      </div>
+    </div>
+
+    <!-- Desktop Menu -->
+    <div class="hidden md:flex gap-8 text-sm font-medium items-center">
+      <a href="index.html" class="hover:text-gold">Home</a>
+      <a href="about.html" class="hover:text-gold">About</a>
+      <a href="history.html" class="hover:text-gold">History</a>
+      <a href="staff.html" class="hover:text-gold">Staff</a>
+      <a href="events.html" class="hover:text-gold">Events</a>
+      <a href="contact.html" class="hover:text-gold">Contact</a>
+      
+      <!-- Associations Dropdown (Right Side + Wider) -->
+      <div id="associations-dropdown" class="group relative">
+        <a href="associations.html" class="hover:text-gold flex items-center gap-1">
+          Associations <i class="fa-solid fa-chevron-down text-xs"></i>
+        </a>
+        <div id="dropdown-menu" class="hidden group-hover:block absolute top-full right-0 mt-2 w-72 glass rounded-3xl py-4 shadow-2xl z-50 bg-[#2A1B4B]/95 border border-gold/30">
+          <a href="media-unit.html" class="block px-6 py-3 hover:bg-white/10">Media Unit</a>
+          <a href="ict-society.html" class="block px-6 py-3 hover:bg-white/10">ICT Society</a>
+          <a href="science-society.html" class="block px-6 py-3 hover:bg-white/10">Science Society</a>
+          <a href="photography-club.html" class="block px-6 py-3 hover:bg-white/10">Photography Club</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button id="mobile-menu-btn" class="md:hidden text-3xl">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden glass border-t border-white/10 px-6 py-6">
+    <div class="flex flex-col gap-6 text-lg font-medium">
+      <a href="index.html" class="hover:text-gold">Home</a>
+      <a href="about.html" class="hover:text-gold">About</a>
+      <a href="history.html" class="hover:text-gold">History</a>
+      <a href="staff.html" class="hover:text-gold">Staff</a>
+      <a href="events.html" class="hover:text-gold">Events</a>
+      <a href="associations.html" class="hover:text-gold">Associations</a>
+      <a href="contact.html" class="hover:text-gold">Contact</a>
+    </div>
+  </div>
+</nav>
+<script>
+// Mobile Hamburger Menu
+const mobileBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+mobileBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('hidden');
+  mobileBtn.innerHTML = mobileMenu.classList.contains('hidden') 
+    ? '<i class="fa-solid fa-bars"></i>' 
+    : '<i class="fa-solid fa-xmark"></i>';
+});
+
+// Associations Dropdown Delay (already stable)
+let timeoutId;
+const dropdownContainer = document.getElementById('associations-dropdown');
+const dropdownMenu = document.getElementById('dropdown-menu');
+
+dropdownContainer.addEventListener('mouseenter', () => {
+  clearTimeout(timeoutId);
+  dropdownMenu.classList.remove('hidden');
+});
+
+dropdownContainer.addEventListener('mouseleave', () => {
+  timeoutId = setTimeout(() => dropdownMenu.classList.add('hidden'), 400);
+});
+</script>
+
+
+  <!-- Hero -->
+  <div class="pt-20 h-[70vh] bg-cover bg-center flex items-center relative" 
+       style="background-image: url('https://picsum.photos/id/1015/1920/1080')">
+    <div class="absolute inset-0 bg-gradient-to-b from-black/70 to-black/80"></div>
+    <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+      <h1 class="text-7xl font-black text-gold">Photography Club</h1>
+      <p class="text-4xl mt-6">"Capturing Moments • Creating Memories"</p>
+      <p class="mt-8 text-2xl italic">"Every click tells a story at Royal College Horana"</p>
+    </div>
+  </div>
+
+  <!-- Club Description -->
+  <section class="py-20 bg-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="glass p-12 rounded-3xl">
+        <h2 class="text-5xl font-bold text-gold mb-8">About Photography Club</h2>
+        <p class="text-lg leading-relaxed">
+          Photography Club is one of the most active clubs at Royal College Horana. 
+          We capture every special moment of school life — from Sports Meets and Annual Days to Science Exhibitions and Cultural Events. 
+          Our members learn professional photography skills, photo editing, and storytelling through images.
+        </p>
+        <p class="mt-6 text-gold font-medium">Open for students from Grade 6 to 13 • Weekly workshops • Annual Photo Contest</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities -->
+  <section class="py-20 bg-[#1A1238]">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-12 text-gold">Our Activities</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="club-card glass p-8 rounded-3xl text-center">
+          <div class="text-6xl mb-6">📸</div>
+          <h3 class="text-2xl font-bold">School Event Coverage</h3>
+          <p class="mt-4">Sports Meet, Concerts, Prize Giving & Big Match</p>
+        </div>
+        <div class="club-card glass p-8 rounded-3xl text-center">
+          <div class="text-6xl mb-6">🎨</div>
+          <h3 class="text-2xl font-bold">Photo Editing Workshops</h3>
+          <p class="mt-4">Adobe Lightroom & Photoshop training</p>
+        </div>
+        <div class="club-card glass p-8 rounded-3xl text-center">
+          <div class="text-6xl mb-6">🏆</div>
+          <h3 class="text-2xl font-bold">Annual Photo Contest</h3>
+          <p class="mt-4">Best School Photographer Award</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section class="py-20 bg-white/5">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-5xl font-bold text-center mb-12">Our Gallery</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <img src="https://picsum.photos/id/801/600/400" class="rounded-3xl">
+        <img src="https://picsum.photos/id/901/600/400" class="rounded-3xl">
+        <img src="https://picsum.photos/id/1001/600/400" class="rounded-3xl">
+        <img src="https://picsum.photos/id/1101/600/400" class="rounded-3xl">
+      </div>
+    </div>
+  </section>
+<!-- UPDATED FOOTER WITH CLICKABLE SOCIAL ICONS -->
+<footer class="glass py-12 border-t border-gold/30">
+  <div class="max-w-7xl mx-auto px-6">
+    
+    <div class="flex flex-col md:flex-row items-center justify-between gap-10">
+      
+      <!-- Left: Logo -->
+      <div class="flex items-center gap-4">
+        <img src="assets/images/logo.png" class="w-14 h-14" alt="Logo">
+        <div>
+          <h3 class="text-2xl font-bold text-gold">Royal College Horana</h3>
+          <p class="text-sm text-white/70">1978 • විද්‍යා දදාති විනයන්</p>
+        </div>
+      </div>
+
+      <!-- Center: Contact -->
+      <div class="text-center md:text-left">
+        <p class="text-xl font-medium">Phone: <span class="text-gold">034 2261096</span></p>
+        <p class="text-xl font-medium mt-1">Email: <span class="text-gold">royalcollegehorana2017@gmail.com</span></p>
+        <p class="text-lg mt-3">Royal College, Horana</p>
+      </div>
+
+      <!-- Right: Social Icons (Clickable + New Tab) -->
+      <div class="flex gap-7 text-3xl text-gold">
+        <a href="https://www.facebook.com/royalcollegehorana" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-facebook"></i></a>
+        <a href="https://www.instagram.com/royalcollegehorana" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@royalcollegehorana" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://wa.me/94342261096" target="_blank" rel="noopener" class="hover:scale-125 transition"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center mt-12 text-white/50 text-sm border-t border-white/10 pt-6">
+      © 2026 Royal College Horana. All Rights Reserved.
+    </div>
+
+  </div>
+</footer>
+
+  <script>
+    tailwind.config = { content: ["./**/*.{html,js}"], theme: { extend: { colors: { gold: "#F4C430" } } } };
+  </script>
+</body>
+</html>

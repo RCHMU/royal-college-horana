@@ -1,0 +1,14 @@
+/* සාමාන්‍යයෙන් Desktop සඳහා */
+.container { width: 1000px; }
+
+/* Phone එකකදී (තිරය 768px ට වඩා අඩු නම්) */
+@media (max-width: 768px) {
+  .container {
+    width: 100%; /* සම්පූර්ණ පළල ගන්න */
+    padding: 20px;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
