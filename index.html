@@ -214,32 +214,52 @@ dropdownContainer.addEventListener('mouseleave', () => {
       <h2 class="text-5xl font-bold text-center mb-12">Our School Houses</h2>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
         <!-- Blue - Prasaadha -->
-        <div class="house-card glass p-8 rounded-3xl text-center border-t-8 border-blue-600">
+        <div class="house-card blue-glow glass p-8 rounded-3xl text-center border-t-8 border-blue-600">
           <p class="text-6xl">🔵</p>
           <h3 class="text-3xl font-bold text-blue-400 mt-4">Prasaadha House</h3>
-          <p class="text-gold">Blue House</p>
+          <p class="text-#2563eb">Blue House</p> 
         </div>
         <!-- Red - Prabodha -->
-        <div class="house-card glass p-8 rounded-3xl text-center border-t-8 border-red-600">
+        <div class="house-card red-glow glass p-8 rounded-3xl text-center border-t-8 border-red-600">
           <p class="text-6xl">🔴</p>
           <h3 class="text-3xl font-bold text-red-400 mt-4">Prabodha House</h3>
-          <p class="text-gold">Red House</p>
+          <p class="text color-#dc2626 ">Red House</p>
         </div>
         <!-- Yellow - Pradheepa -->
-        <div class="house-card glass p-8 rounded-3xl text-center border-t-8 border-yellow-500">
+        <div class="house-card yellow-glow glass p-8 rounded-3xl text-center border-t-8 border-yellow-500">
           <p class="text-6xl">🟡</p>
           <h3 class="text-3xl font-bold text-yellow-400 mt-4">Pradheepa House</h3>
-          <p class="text-gold">Yellow House</p>
+          <p class="text-">Yellow House</p> 
         </div>
         <!-- Green - Praveena -->
-        <div class="house-card glass p-8 rounded-3xl text-center border-t-8 border-green-600">
+        <div class="house-card green-glow glass p-8 rounded-3xl text-center border-t-8 border-green-600">
           <p class="text-6xl">🟢</p>
           <h3 class="text-3xl font-bold text-green-400 mt-4">Praveena House</h3>
-          <p class="text-gold">Green House</p>
+          <p class="text-">Green House</p>
         </div>
+     
       </div>
     </div>
+    
   </section>
+  <style>
+  /* පොදු Hover Effect එක (කැරකෙන එක සහ විශාල වන එක) */
+.house-card:hover { 
+  transform: perspective(1200px) rotateY(15deg) rotateX(8deg) scale(1.1); 
+}
+
+/* නිල් පාට Glow එක */
+.blue-glow:hover { box-shadow: 0 0 40px #2563eb; }
+
+/* රතු පාට Glow එක */
+.red-glow:hover { box-shadow: 0 0 40px #dc2626; }
+
+/* කහ පාට (රන්වන්) Glow එක */
+.yellow-glow:hover { box-shadow: 0 0 40px #f4c430; }
+
+/* කොළ පාට Glow එක */
+.green-glow:hover { box-shadow: 0 0 40px #16a34a; }
+</style>
 
   <!-- Why Choose Royal College Horana? Box -->
   <section class="py-20 bg-[#1A1238]">
